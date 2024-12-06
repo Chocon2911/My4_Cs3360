@@ -1,16 +1,20 @@
 package UI.Customer.Child;
 
+import Obj.Data.Item;
 import Util.GuiUtil;
 import javax.swing.*;
 
 public class CustomerItemInfoUI extends JFrame
 {
     //==========================================Variable==========================================
-    private JPanel itemPanel = new JPanel();
+    private final JPanel itemPanel = new JPanel();
 
-    private JTextField amountTextField;
-    private JButton cancelButton;
-    private JButton addButton;
+    // TextField
+    private final JTextField amountTextField;
+
+    // Button
+    private final JButton cancelButton;
+    private final JButton addButton;
 
     //========================================Constructor=========================================
     public CustomerItemInfoUI()
@@ -100,4 +104,29 @@ public class CustomerItemInfoUI extends JFrame
     // Button
     public JButton getCancelButton() { return this.cancelButton; }
     public JButton getAddButton() { return this.addButton; }
+
+    //============================================Set=============================================
+    public void setItemPanel(Item item)
+    {
+        GuiUtil guiUtil = GuiUtil.getInstance();
+
+        this.itemPanel.removeAll();
+        this.itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.Y_AXIS));
+
+        // Name Label
+        JLabel nameLabel = guiUtil.getNormalLabel("Name: " + item.getName());
+
+        // Price Label
+        JLabel priceLabel = guiUtil.getNormalLabel("Price: " + item.getPrice());
+
+        // ItemType Label
+        JLabel itemTypeLabel = guiUtil.getNormalLabel("Item Type:  " + item.getItemType().toString());
+
+        // Display
+        this.itemPanel.add(nameLabel);
+        this.itemPanel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
+        this.itemPanel.add(priceLabel);
+        this.itemPanel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
+        this.itemPanel.add(itemTypeLabel);
+    }
 }

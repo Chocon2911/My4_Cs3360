@@ -3,23 +3,22 @@ package UI.Staff.Child;
 import Util.GuiUtil;
 import javax.swing.*;
 
-public class StaffMainUI extends JFrame
+public class StaffPreMainUI extends JFrame
 {
     //==========================================Variable==========================================
-    private JButton infoButton;
-    private JButton depositCustomerButton;
-    private JButton customerRequestButton;
-    private JButton quitButton;
+    private final JButton infoButton;
+    private final JButton joinShopButton;
+    private final JButton quitButton;
 
     //========================================Constructor=========================================
-    public StaffMainUI()
+    public StaffPreMainUI() 
     {
-        super("Staff.Main");
+        super("Staff.PreMain");
         GuiUtil guiUtil = GuiUtil.getInstance();
 
         // Frame
         setSize(guiUtil.frameWidth, guiUtil.frameHeight);
-        setResizable(false);
+        setResizable(true);
 
         // Panel
         JPanel panel = guiUtil.getMainPanel();
@@ -31,13 +30,9 @@ public class StaffMainUI extends JFrame
         this.infoButton = guiUtil.createButton("Information", guiUtil.bigButtonWidth, guiUtil.bigButtonHeight);
         guiUtil.setAlignmentCenter(this.infoButton);
 
-        // DepositCustomer Button
-        this.depositCustomerButton = guiUtil.createButton("Deposit Customer", guiUtil.bigButtonWidth, guiUtil.bigButtonHeight);
-        guiUtil.setAlignmentCenter(this.depositCustomerButton);
-
-        // CustomerRequest Button
-        this.customerRequestButton = guiUtil.createButton("Customer Request", guiUtil.bigButtonWidth, guiUtil.bigButtonHeight);
-        guiUtil.setAlignmentCenter(this.customerRequestButton);
+        // JoinShop Button
+        this.joinShopButton = guiUtil.createButton("Join Shop", guiUtil.bigButtonWidth, guiUtil.bigButtonHeight);
+        guiUtil.setAlignmentCenter(this.joinShopButton);
 
         // Quit Button
         this.quitButton = guiUtil.createButton("Quit", guiUtil.bigButtonWidth, guiUtil.bigButtonHeight);
@@ -46,13 +41,11 @@ public class StaffMainUI extends JFrame
         // Display
         panel.add(Box.createVerticalGlue());
         panel.add(titleLabel);
-        panel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
+        panel.add(Box.createVerticalGlue());
         panel.add(this.infoButton);
-        panel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
-        panel.add(this.depositCustomerButton);
-        panel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
-        panel.add(this.customerRequestButton);
-        panel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
+        panel.add(Box.createVerticalGlue());
+        panel.add(this.joinShopButton);
+        panel.add(Box.createVerticalGlue());
         panel.add(this.quitButton);
         panel.add(Box.createVerticalGlue());
 
@@ -61,7 +54,6 @@ public class StaffMainUI extends JFrame
 
     //============================================Get=============================================
     public JButton getInfoButton() { return this.infoButton; }
-    public JButton getDepositCustomerButton() { return this.depositCustomerButton; }
-    public JButton getCustomerRequestButton() { return this.customerRequestButton; }
+    public JButton getJoinShopButton() { return this.joinShopButton; }
     public JButton getQuitButton() { return this.quitButton; }
 }

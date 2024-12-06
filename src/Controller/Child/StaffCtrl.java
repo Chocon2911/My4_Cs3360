@@ -3,9 +3,12 @@ package Controller.Child;
 import Controller.Base.AbstractObjCtrl;
 import DataBase.Child.*;
 import Obj.Data.*;
+import UI.Staff.StaffUI;
 
 public class StaffCtrl extends AbstractObjCtrl
 {
+    private StaffUI staffUI;
+
     //========================================Constructor=========================================
     public StaffCtrl() { super(); }
     public StaffCtrl(String id) { super(id); }

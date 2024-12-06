@@ -238,9 +238,18 @@ public class CustomerCtrl extends AbstractObjCtrl
         // item Buttons
         for (JButton itemButton : add2CartUI.getItemButtons())
         {
+
             itemButton.addActionListener((ActionEvent e) -> 
             {
+                Customer customer = this.queryInfo();
+                if (customer == null) return;
+                if (customer.getShop == null)
+                {
+                    
+                }
+
                 add2CartUI.setVisible(false);
+                add2CartUI.setItemsPanel(items);
                 this.customerUI.getItemInfoUI().setVisible(true);
             });
         }
@@ -249,7 +258,24 @@ public class CustomerCtrl extends AbstractObjCtrl
     //========================================ItemInfo UI=========================================
     private void defaultItemInfoUI()
     {
-        
+        CustomerItemInfoUI itemInfoUI = this.customerUI.getItemInfoUI();
+        this.setDefaultClose(itemInfoUI);
+
+        // Add Button
+        itemInfoUI.getAddButton().addActionListener((ActionEvent e) -> 
+        {
+            String amountStr = itemInfoUI.getAmount();
+
+            try
+            {
+                int requestedAmount = Integer.parseInt(amountStr);
+                
+            }
+            catch (NumberFormatException ex)
+            {
+
+            }
+        });
     }
 
     //=======================================RequestCart UI=======================================
@@ -327,6 +353,25 @@ public class CustomerCtrl extends AbstractObjCtrl
                 System.exit(0);
             }
         });
+    }
+
+    //==========================================Add Item==========================================
+    private int addItem(Item item, int amount)
+    {
+        if (item == null)
+        {
+            System.out.println("Item is null");
+            return 1; // Item is null
+        }
+        
+        Item queryItem = ItemDb.getInstance().queryItemData(item.getId());
+        if (queryItem.getLeftAmount() < amount)
+        {
+            System.out.println("LeftAmount < RequestedAmount");
+            return 2; // LeftAmount < RequestedAmount
+        }
+
+        return 0; // Add Successfully
     }
 
     //============================================Test============================================

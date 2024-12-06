@@ -1,8 +1,14 @@
 package Controller.Child;
 
 import DataBase.Child.CustomerDb;
+import DataBase.Child.CustomerRequestDb;
+import DataBase.Child.IdDb;
+import DataBase.Child.ItemDb;
 import DataBase.Child.ManagerDb;
+import DataBase.Child.RequestedItemDb;
+import DataBase.Child.ShopDb;
 import DataBase.Child.StaffDb;
+import DataBase.Child.UserNameDb;
 import Obj.Data.Customer;
 import Obj.Data.Manager;
 import Obj.Data.Staff;
@@ -12,7 +18,6 @@ import Util.ObjUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -260,12 +265,12 @@ public class App1Ctrl
 
         String e = CustomerDb.getInstance().insertCustomerData(customer);
         if (e == null) return 0;
-        else if (e.contains("Customers.Id"))
+        else if (e.contains("Id"))
         {
             System.out.println("signUp() Error: Id already exists");
             return this.signUp(name, userName, password);
         } 
-        else if (e.contains("Customers.UserName")) return 1;
+        else if (e.contains("UserName")) return 1;
 
         return 0;
     }
@@ -285,6 +290,16 @@ public class App1Ctrl
     //============================================Test============================================
     public static void main(String[] args) 
     {
+        ShopDb.getInstance().createShopTable();
+        CustomerDb.getInstance().createCustomerTable();
+        StaffDb.getInstance().createStaffTable();
+        ManagerDb.getInstance().createManagerTable();
+        ItemDb.getInstance().createItemTable();
+        RequestedItemDb.getInstance().createRequestedItemTable();
+        CustomerRequestDb.getInstance().createCustomerRequestTable();
+        IdDb.getInstance().createIdTable();
+        UserNameDb.getInstance().createUserNameTable();
+
         new App1Ctrl();
     }
 }

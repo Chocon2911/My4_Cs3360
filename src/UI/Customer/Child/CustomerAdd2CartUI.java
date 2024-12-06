@@ -1,20 +1,23 @@
 package UI.Customer.Child;
 
 import Obj.Data.Item;
-import UI.Customer.Other.CustomerShoppingItem;
 import Util.GuiUtil;
 import java.awt.BorderLayout;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
 public class CustomerAdd2CartUI extends JFrame
 {
     //==========================================Variable==========================================
-    private JButton backButton;
+    private final JPanel itemsPanel = new JPanel();
+    private final JButton backButton;
+    private final List<Item> items = new ArrayList<>();
+    private final List<JButton> itemButtons = new ArrayList<>();
+    private Item chosenItem;
 
     //========================================Constructor=========================================
-    public CustomerAdd2CartUI(List<CustomerShoppingItem> customerShoppingItems)
+    public CustomerAdd2CartUI()
     {
         super("Customer.Add2Cart");
         GuiUtil guiUtil = GuiUtil.getInstance();
@@ -33,20 +36,11 @@ public class CustomerAdd2CartUI extends JFrame
         // Title Label
         JLabel titleLabel = guiUtil.getTitleLabel("Item List");
 
-        // Item Panel
-        JPanel itemPanel = guiUtil.getMainPanel();
-        for (JButton button : button_Labels.keySet())
-        {
-            itemPanel.add(button);
-            itemPanel.add(button_Labels.get(button));
-            itemPanel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
-        }
-
         // Display
         mainPanel.add(Box.createVerticalGlue());
         mainPanel.add(titleLabel);
         mainPanel.add(Box.createVerticalStrut(guiUtil.verticalStrut));
-        mainPanel.add(itemPanel);
+        mainPanel.add(this.itemsPanel);
         mainPanel.add(Box.createVerticalGlue());
 
 
@@ -66,15 +60,31 @@ public class CustomerAdd2CartUI extends JFrame
 
     //============================================Get=============================================
     public JButton getBackButton() { return this.backButton; }
-    public List<CustomerShoppingItem> getCustomerShoppingItems() { return this.customerShoppingItems; }
+    public List<Item> getItems() { return this.items; }
+    public List<JButton> getItemButtons() { return this.itemButtons; }
 
     //============================================Set=============================================
-    public void setButton_Labels(List<Item> items) 
+    public void setChosenItem(Item chosenItem)
+    {
+        this.chosenItem = chosenItem;
+    }
+
+    public void setItemsPanel(List<Item> items) 
     { 
+        this.itemsPanel.removeAll();
+        this.itemButtons.clear();
+
         for (Item item : items) 
         {
             JButton button = new JButton(item.getName());
             JLabel label = GuiUtil.getInstance().getNormalLabel("Price: $" + item.getPrice());
+            
+            this.itemsPanel.add(button);
+            this.itemsPanel.add(label);
+            this.itemsPanel.add(Box.createVerticalStrut(GuiUtil.getInstance().verticalStrut));
+
+            this.itemButtons.add(button);
+            this.items.add(item);
         }
     }
 }
