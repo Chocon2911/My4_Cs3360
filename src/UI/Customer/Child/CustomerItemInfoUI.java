@@ -6,7 +6,7 @@ import javax.swing.*;
 public class CustomerItemInfoUI extends JFrame
 {
     //==========================================Variable==========================================
-    private JPanel itemPanel;
+    private JPanel itemPanel = new JPanel();
 
     private JTextField amountTextField;
     private JButton cancelButton;

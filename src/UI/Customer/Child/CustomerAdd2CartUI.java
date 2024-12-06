@@ -1,19 +1,20 @@
 package UI.Customer.Child;
 
+import Obj.Data.Item;
+import UI.Customer.Other.CustomerShoppingItem;
 import Util.GuiUtil;
 import java.awt.BorderLayout;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.*;
 
 public class CustomerAdd2CartUI extends JFrame
 {
     //==========================================Variable==========================================
-    private HashMap<JButton, JLabel> button_Labels;
-    
     private JButton backButton;
 
     //========================================Constructor=========================================
-    public CustomerAdd2CartUI()
+    public CustomerAdd2CartUI(List<CustomerShoppingItem> customerShoppingItems)
     {
         super("Customer.Add2Cart");
         GuiUtil guiUtil = GuiUtil.getInstance();
@@ -59,13 +60,21 @@ public class CustomerAdd2CartUI extends JFrame
         this.backButton = guiUtil.createButton("Back", guiUtil.smallButtonWidth, guiUtil.bigButtonHeight);
 
         // ===Display===
-        this.add(backButton, BorderLayout.WEST);
+        this.add(this.backButton, BorderLayout.WEST);
         this.add(scrollPane, BorderLayout.CENTER);
     }
 
     //============================================Get=============================================
     public JButton getBackButton() { return this.backButton; }
+    public List<CustomerShoppingItem> getCustomerShoppingItems() { return this.customerShoppingItems; }
 
     //============================================Set=============================================
-    public void setButton_Labels(HashMap<JButton, JLabel> button_Labels) { this.button_Labels = button_Labels; }
+    public void setButton_Labels(List<Item> items) 
+    { 
+        for (Item item : items) 
+        {
+            JButton button = new JButton(item.getName());
+            JLabel label = GuiUtil.getInstance().getNormalLabel("Price: $" + item.getPrice());
+        }
+    }
 }

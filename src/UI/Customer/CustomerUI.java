@@ -28,12 +28,12 @@ public class CustomerUI
     }
 
     //============================================Get=============================================
-    public CustomerPreMainUI getPreMainUI() { return preMainUI; }
-    public CustomerInfoUI getInfoUI() { return infoUI; }
-    public CustomerMainUI getMainUI() { return mainUI; }
-    public CustomerJoinShopUI getJoinShopUI() { return joinShopUI; }
-    public CustomerAdd2CartUI getAdd2CartUI() { return add2CartUI; }
-    public CustomerItemInfoUI getItemInfoUI() { return itemInfoUI; }
-    public CustomerRequestCartUI getRequestCartUI() { return requestCartUI; }
-    public CustomerUnReqItemInfoUI getUnReqItemInfoUI() { return unReqItemInfoUI; }
+    public CustomerPreMainUI getPreMainUI() { return this.preMainUI; }
+    public CustomerInfoUI getInfoUI() { return this.infoUI; }
+    public CustomerMainUI getMainUI() { return this.mainUI; }
+    public CustomerJoinShopUI getJoinShopUI() { return this.joinShopUI; }
+    public CustomerAdd2CartUI getAdd2CartUI() { return this.add2CartUI; }
+    public CustomerItemInfoUI getItemInfoUI() { return this.itemInfoUI; }
+    public CustomerRequestCartUI getRequestCartUI() { return this.requestCartUI; }
+    public CustomerUnReqItemInfoUI getUnReqItemInfoUI() { return this.unReqItemInfoUI; }
 }

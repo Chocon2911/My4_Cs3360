@@ -1,6 +1,8 @@
 package UI.Customer.Child;
 
-public class CustomerRequestCartUI 
+import javax.swing.*;
+
+public class CustomerRequestCartUI extends JFrame
 {
     //==========================================Variable==========================================
 

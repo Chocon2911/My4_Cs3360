@@ -12,7 +12,7 @@ import javax.swing.*;
 public class CustomerInfoUI extends JFrame 
 {
     //==========================================Variable==========================================
-    private JPanel infoPanel;
+    private JPanel infoPanel = new JPanel();
     private JButton backButton;
 
     //========================================Constructor=========================================

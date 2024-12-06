@@ -14,7 +14,7 @@ public class CustomerPreMainUI extends JFrame
     //========================================Constructor=========================================
     public CustomerPreMainUI()
     {
-        super("Manager.PreMain");
+        super("Customer.PreMain");
         GuiUtil guiUtil = GuiUtil.getInstance();
 
         // Frame
@@ -26,7 +26,7 @@ public class CustomerPreMainUI extends JFrame
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         // Title Label
-        JLabel titleLabel = new JLabel("Manager");
+        JLabel titleLabel = new JLabel("Customer");
         guiUtil.setAlignmentCenter(titleLabel);
         titleLabel.setFont(new Font("Arial", Font.BOLD, guiUtil.bigTitleSize));
 
